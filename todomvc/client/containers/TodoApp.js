@@ -6,6 +6,11 @@ import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/TodoActions';
 
 class TodoApp extends Component {
+  
+  componentDidMount() {
+    this.props.actions.getTodos();
+  }
+  
   render() {
     const { todos, actions } = this.props;
 

@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^', include('todo.urls')),
     url(r'^api/', include(routers.SharedAPIRootRouter.router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^jsreverse/$', 'django_js_reverse.views.urls_js', name='js_reverse'),
 ]

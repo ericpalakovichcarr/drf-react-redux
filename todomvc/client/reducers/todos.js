@@ -1,19 +1,15 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from '../constants/ActionTypes';
+import { GET_TODOS, ADD_TODO, DELETE_TODO, EDIT_TODO } from '../constants/ActionTypes';
 
-const initialState = [{
-  text: 'Use Redux',
-  marked: false,
-  id: 0
-}];
+const initialState = [];
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
+
+  case GET_TODOS:
+    return [...action.todos];
+
   case ADD_TODO:
-    return [{
-      id: (state.length === 0) ? 0 : state[0].id + 1,
-      marked: false,
-      text: action.text
-    }, ...state];
+    return [...state, action.todo];
 
   case DELETE_TODO:
     return state.filter(todo =>
@@ -22,11 +18,10 @@ export default function todos(state = initialState, action) {
 
   case EDIT_TODO:
     return state.map(todo =>
-      todo.id === action.id ?
-        { ...todo, text: action.text } :
-        todo
+      todo.id === action.todo.id ? action.todo : todo
     );
 
+  /* Not importatnt to implement these for the talk 
   case MARK_TODO:
     return state.map(todo =>
       todo.id === action.id ?
@@ -43,6 +38,7 @@ export default function todos(state = initialState, action) {
 
   case CLEAR_MARKED:
     return state.filter(todo => todo.marked === false);
+  */
 
   default:
     return state;

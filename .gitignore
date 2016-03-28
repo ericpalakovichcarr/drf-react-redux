@@ -9,3 +9,5 @@ webpack-stats.json
 env
 .idea
 .pycharm_helpers
+db.sqlite3
+node_modules

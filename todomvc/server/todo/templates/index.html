@@ -1,0 +1,13 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+<html>
+  <head>
+    <title>Redux TodoMVC in Django</title>
+  </head>
+  <body>
+    <div>Served from Django.</div>
+    <div class="todoapp" id="root"></div>
+    {% render_bundle 'main' 'js' %}
+  </body>
+</html>
